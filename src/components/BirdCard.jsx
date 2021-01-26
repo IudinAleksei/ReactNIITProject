@@ -1,9 +1,13 @@
-function BirdCard() {
+function BirdCard(props) {
   return (
     <div className="card">
-      <img src="..." className="card-img-top" alt="..." />
+      <img src={props.url} className="card-img-top" alt="..." />
       <div className="card-body">
-        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5>'Corvus corax'</h5>
+        <audio controls>
+          <source src="https://www.xeno-canto.org/sounds/uploaded/XIQVMQVUPP/XC518684-Grands%20corbeaux%2009012020%20Suzon.mp3" type="audio/mpeg" />
+          Тег audio не поддерживается вашим браузером. 
+        </audio> 
       </div>
     </div>
   );

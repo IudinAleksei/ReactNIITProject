@@ -1,5 +1,4 @@
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
-import './App.css';
 import Bird from './components/Bird';
 import BirdNav from './components/BirdNav';
 import Header from './components/Header';
