@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import BirdCard from './BirdCard';
 import BirdDescription from './BirdDescription';
 import { URL_PHOTO_API } from '../common/constants';
@@ -43,4 +44,11 @@ class Bird extends React.Component {
   }
 }
 
-export default Bird;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    syncPosts: state.posts.posts
+  }
+}
+
+export default connect(mapStateToProps, null)(Bird);
