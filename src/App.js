@@ -5,12 +5,15 @@ import Header from './components/Header';
 
 
 function App() {
+
+  const titles = ['sea', 'forest'];
   return (
     <BrowserRouter>
       <div className="container">
         <Header />
         <Switch>
-          <Route component={BirdNav} path="/" exact />
+          <Route render={() => <BirdNav titles={[]} />} path="/" exact />
+          <Route render={() => <BirdNav titles={titles} />} path="/sea" />
         </Switch>
         <Bird />            
       </div>

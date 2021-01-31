@@ -1,17 +1,14 @@
-import { NavLink } from 'react-router-dom'
-
-function BirdNav() {
+function BirdNav(props) {
   return (
-    <ul className="nav nav-pills nav-fill">
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/">Active</NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/about">Link</NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/self">Link</NavLink>
-      </li>      
+    <ul className="nav nav-pills nav-fill">      
+      {props.titles.map(title => {
+        return (
+            <li className="nav-item">
+              <a className="nav-link active" href="/sea">{title}</a>
+            </li>
+          )        
+        })
+      }        
     </ul>  
   );
 }
