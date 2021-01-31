@@ -30,7 +30,6 @@ class Bird extends React.Component {
   }
 
   render() {
-    console.log('render');
     return (
       <div className="row">
         <div className="col">
@@ -44,8 +43,7 @@ class Bird extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state)
+const mapStateToProps = state => {  
   return {
     state
   }

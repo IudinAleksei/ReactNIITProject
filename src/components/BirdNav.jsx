@@ -1,13 +1,19 @@
 import { connect } from "react-redux";
 
-function BirdNav({birds}) {  
-  console.log(birds)
+
+function BirdNav({birds}) { 
   return (
     <ul className="nav nav-pills nav-fill"> 
     {birds.map((bird => {
       return (
           <li className="nav-item" key={bird.id}>
-            <a className="nav-link" href="/sea">{bird.name}</a>
+            <a 
+              className="nav-link" 
+              href="/#" 
+              onClick={(event => {
+                event.preventDefault();
+              })}
+            >{bird.name}</a>
           </li>
         )        
         })
@@ -18,7 +24,7 @@ function BirdNav({birds}) {
 
 const mapStateToProps = state => {
   return {
-    birds: state.nav.birdData[1]
+    birds: state.nav.birds
   }
 }
 

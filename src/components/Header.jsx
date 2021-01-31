@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 
-function Header({ birdGroups }) {
+function Header({birdGroups}) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <NavLink className="navbar-brand" to="/">
@@ -15,7 +15,11 @@ function Header({ birdGroups }) {
 
           {birdGroups.map((group, idx) => {
             return (
-                <NavLink className="nav-item nav-link" to={`/${group.href}`} key={idx}>{group.title}</NavLink>
+                <NavLink 
+                  className="nav-item nav-link" 
+                  to={`/${group.href}`}                   
+                  key={idx}
+                >{group.title}</NavLink>
               )        
             })
           }

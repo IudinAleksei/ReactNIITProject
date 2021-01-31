@@ -1,7 +1,9 @@
-import { BrowserRouter, Switch, Route} from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import Bird from './components/Bird';
 import BirdNav from './components/BirdNav';
+
 import Header from './components/Header';
+import navHOC from './hoc/navHOC';
 
 
 function App() {  
@@ -9,9 +11,13 @@ function App() {
       <BrowserRouter>
       <div className="container">
         <Header />
-        <Switch>          
-          <Route component={BirdNav} path="/:group" />
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>         
+          <Route component={navHOC} path="/:group" />
         </Switch>
+        <BirdNav />
         <Bird />            
       </div>
       </BrowserRouter> 
