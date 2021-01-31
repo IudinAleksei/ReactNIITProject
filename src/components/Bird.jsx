@@ -17,7 +17,7 @@ const getDataFromApi = async (url) => {
 
 class Bird extends React.Component {
   
-  constructor() {
+  constructor() {    
     super();
     this.state = {
       url: null
@@ -33,10 +33,10 @@ class Bird extends React.Component {
     return (
       <div className="row">
         <div className="col">
-          <BirdCard url={this.state.url} />
+          <BirdCard image={this.props.bird.image} audio={this.props.bird.audio} />
         </div>
         <div className="col">
-          <BirdDescription title="Ворон" text="Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет."/>
+          <BirdDescription title={this.props.bird.name} latin={this.props.bird.species} text={this.props.bird.description}/>
         </div>
       </div>
     )
@@ -44,9 +44,7 @@ class Bird extends React.Component {
 }
 
 const mapStateToProps = state => {  
-  return {
-    state
-  }
+  return { bird: state.nav.bird }
 }
 
 export default connect(mapStateToProps, null)(Bird);

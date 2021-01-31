@@ -1,4 +1,4 @@
-import { SWITCH_GROUP } from "./types"
+import { SWITCH_BIRD, SWITCH_GROUP } from "./types"
 
 export function showLoader() {
   return {
@@ -12,9 +12,16 @@ export function hideLoader() {
   }
 }
 
-export function changeBirds (group = 'home') {  
+export function changeGroup (group = 'home') {  
   return {
     type: SWITCH_GROUP,
     payload: group
+  }
+}
+
+export function changeBird (bird) {
+  return {
+    type: SWITCH_BIRD,
+    payload: bird
   }
 }

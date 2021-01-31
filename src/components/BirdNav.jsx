@@ -1,10 +1,17 @@
+import { useEffect } from 'react';
 import { connect } from "react-redux";
+import { changeBird, changeGroup } from '../redux/actions';
 
 
-function BirdNav({birds}) { 
+function BirdNav(props) { 
+
+  useEffect(() => {
+    props.changeGroup(props.match.params.group);    
+  });
+
   return (
-    <ul className="nav nav-pills nav-fill"> 
-    {birds.map((bird => {
+    <ul className="nav nav-fill nav-tabs"> 
+    {props.birds.map((bird => {
       return (
           <li className="nav-item" key={bird.id}>
             <a 
@@ -12,20 +19,26 @@ function BirdNav({birds}) {
               href="/#" 
               onClick={(event => {
                 event.preventDefault();
+                props.changeBird(bird.id - 1);
               })}
             >{bird.name}</a>
           </li>
         )        
         })
       )}
-      </ul>   
+      </ul>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    birds: state.nav.birds
+    birds: state.nav.birds    
   }
 }
 
-export default connect(mapStateToProps)(BirdNav);
+const mapDispatchToProps = {
+  changeGroup,
+  changeBird
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BirdNav);
