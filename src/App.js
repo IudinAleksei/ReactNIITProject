@@ -4,21 +4,17 @@ import BirdNav from './components/BirdNav';
 import Header from './components/Header';
 
 
-function App() {
-
-  const titles = ['sea', 'forest'];
+function App() {  
   return (
-    <BrowserRouter>
+      <BrowserRouter>
       <div className="container">
         <Header />
-        <Switch>
-          <Route render={() => <BirdNav titles={[]} />} path="/" exact />
-          <Route render={() => <BirdNav titles={titles} />} path="/sea" />
+        <Switch>          
+          <Route component={BirdNav} path="/:group" />
         </Switch>
         <Bird />            
       </div>
-    </BrowserRouter>
-    
+      </BrowserRouter> 
   );
 }
 

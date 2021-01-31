@@ -1,16 +1,25 @@
-function BirdNav(props) {
+import { connect } from "react-redux";
+
+function BirdNav({birds}) {  
+  console.log(birds)
   return (
-    <ul className="nav nav-pills nav-fill">      
-      {props.titles.map(title => {
-        return (
-            <li className="nav-item">
-              <a className="nav-link active" href="/sea">{title}</a>
-            </li>
-          )        
+    <ul className="nav nav-pills nav-fill"> 
+    {birds.map((bird => {
+      return (
+          <li className="nav-item" key={bird.id}>
+            <a className="nav-link" href="/sea">{bird.name}</a>
+          </li>
+        )        
         })
-      }        
-    </ul>  
+      )}
+      </ul>   
   );
 }
 
-export default BirdNav;
+const mapStateToProps = state => {
+  return {
+    birds: state.nav.birdData[1]
+  }
+}
+
+export default connect(mapStateToProps)(BirdNav);

@@ -3,7 +3,7 @@ const initialState = {
   alert: null
 }
 
-export const appReducer = (state = initialState, action) => {
+export const appReducer = (state = initialState, action = {type: null}) => {
   switch (action.type) {
     case 'show':
       return {...state, loading: true};

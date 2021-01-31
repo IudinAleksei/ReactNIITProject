@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import { appReducer } from "./appReducer";
-import { postsReducer } from "./postsReducer";
+import { navReducer } from "./navReducer";
 
 export const rootReducer = combineReducers({
-  posts: postsReducer,
+  nav: navReducer,  
   app: appReducer 
 });

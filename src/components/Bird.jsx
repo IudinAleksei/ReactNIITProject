@@ -47,7 +47,7 @@ class Bird extends React.Component {
 const mapStateToProps = state => {
   console.log(state)
   return {
-    syncPosts: state.posts.posts
+    state
   }
 }
 

@@ -1,4 +1,13 @@
-const birdsData = [
+export const BIRD_GROUPS = [
+  {title: 'Известные', href: 'home'}, 
+  {title: 'Воробьиные', href: 'sparrow'}, 
+  {title: 'Лесные птицы', href: 'forest_birds'},
+  {title: 'Певчие птицы', href: 'songbirds'},
+  {title: 'Хищные птицы', href: 'hunting_birds'},
+  {title: 'Морские птицы', href: 'sea_birds'},  
+  ];
+
+export const BIRDS_DATA = [
   [       
     {
       id: 1,
@@ -300,5 +309,3 @@ const birdsData = [
     }
   ]
 ];
-
-export default birdsData;
