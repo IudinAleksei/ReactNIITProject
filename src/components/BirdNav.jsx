@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { changeBird, changeGroup } from '../redux/actions';
 
 
+
 function BirdNav(props) { 
 
   useEffect(() => {
@@ -16,6 +17,7 @@ function BirdNav(props) {
     {props.birds.map((bird => {
       let classes = 'nav-link fs18';
       if (act === bird.id) {
+        
         classes += ' active text-dark';
       } else {
         classes += ' text-info';
@@ -28,7 +30,9 @@ function BirdNav(props) {
               onClick={(event => {
                 event.preventDefault();
                 props.changeBird(bird.id - 1);
+                console.log(act);
                 act = bird.id;
+                console.log(act);
               })}
             >{bird.name}</a>
           </li>
