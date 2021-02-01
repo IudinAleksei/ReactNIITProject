@@ -2,10 +2,9 @@ function BirdCard(props) {
   
   return (
     <div className="card">
-      <img src={props.image} className="card-img-top" alt="..." />
+      <img src={props.image} className="card-img-top img-thumbnail" alt="..." />
       <div className="card-body">        
-        <audio controls>
-          <source src={props.audio} type="audio/mpeg" />
+        <audio src={props.audio} className="d-block m-auto" controls>          
           Тег audio не поддерживается вашим браузером. 
         </audio> 
       </div>

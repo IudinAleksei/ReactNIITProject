@@ -16,7 +16,7 @@ function Header({birdGroups}) {
           {birdGroups.map((group, idx) => {
             return (
                 <NavLink 
-                  className="nav-item nav-link" 
+                  className="nav-item nav-link fs18" 
                   to={`/${group.href}`}                   
                   key={idx}
                 >{group.title}</NavLink>

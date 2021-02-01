@@ -1,3 +1,8 @@
+$body-bg: #ccc;
+// $body-color: #111;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +15,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.fs18 {
+  font-size: 18px;
 }
