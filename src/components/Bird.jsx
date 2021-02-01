@@ -9,7 +9,7 @@ class Bird extends React.Component {
     return (
       <div className="row">
         <div className="col">
-          <BirdCard image={this.props.bird.image} audio={this.props.bird.audio} />
+          <BirdCard image={this.props.bird.image} audio={this.props.bird.audio} title={this.props.bird.name} />
         </div>
         <div className="col">
           <BirdDescription title={this.props.bird.name} latin={this.props.bird.species} text={this.props.bird.description}/>

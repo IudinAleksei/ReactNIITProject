@@ -10,18 +10,10 @@ function BirdNav(props) {
     props.changeGroup(props.match.params.group);    
   });
 
-  let act = 1;
-
   return (
     <ul className="nav nav-fill nav-tabs"> 
     {props.birds.map((bird => {
-      let classes = 'nav-link fs18';
-      if (act === bird.id) {
-        
-        classes += ' active text-dark';
-      } else {
-        classes += ' text-info';
-      }
+      let classes = 'nav-link fs18  text-info';      
       return (
           <li className="nav-item" key={bird.id}>
             <a 
@@ -29,10 +21,7 @@ function BirdNav(props) {
               href="/#" 
               onClick={(event => {
                 event.preventDefault();
-                props.changeBird(bird.id - 1);
-                console.log(act);
-                act = bird.id;
-                console.log(act);
+                props.changeBird(bird.id - 1);                
               })}
             >{bird.name}</a>
           </li>
