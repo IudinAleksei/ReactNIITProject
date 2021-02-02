@@ -1,14 +1,18 @@
+import { SHOW_LOADER, HIDE_LOADER, SEND_REQUEST } from './types';
+
 const initialState = {
   loading: false,
-  alert: null
+  birdUrl: null
 }
 
 export const appReducer = (state = initialState, action = {type: null}) => {
   switch (action.type) {
-    case 'show':
+    case SHOW_LOADER:
       return {...state, loading: true};
-    case 'hide': 
+    case HIDE_LOADER: 
       return {...state, loading: false};
+    case SEND_REQUEST:
+      return {...state, birdUrl: action.payload};
     default: return state
   }
 }

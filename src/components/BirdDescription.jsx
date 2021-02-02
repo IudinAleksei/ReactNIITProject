@@ -1,46 +1,45 @@
-import { useEffect, useState } from "react";
-import { URL_PHOTO_API } from '../common/constants';
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { getPhotoURL } from '../redux/actions';
 
-const getDataFromApi = async (url) => {
-  try {    
-    const res = await fetch(url);
-    const data = (res.ok) ? await res.json() : 'connection error';
-
-    return data;
-  } catch (err) {
-    return 'connection error';
-  }
-}
 
 const BirdDescription = (props) => {
-  const [url, setUrl] = useState(null);
 
   useEffect(() => {
-    getDataFromApi(`${URL_PHOTO_API}${props.latin}`)
-      .then((res) => setUrl(res.photos.photo[0].url_m))
-    ;
-  }, [props.latin]);
+    props.getPhotoURL(props.bird.species);    
+  }, [props.bird.species]);
   
   return (
     <div className="bird-description">
       <div className="image-container">
         <img 
-          key={props.latin}
-          src={url} 
+          key={props.bird.species}
+          src={props.birdUrl} 
           // onLoad={((event) => event.target.parentNode.classList.remove('invisible'))}
           className="card-img-top img-thumbnail"  
-          alt={props.latin}/>
+          alt={props.bird.species}/>
           <div className="spinner-border text-info centered" role="status">
             <span className="sr-only">Loading...</span>
           </div> 
       </div>
            
-      <h3 className="text-center mt-3">{props.title}</h3>
-      <h4 className="text-center mt-1">({props.latin})</h4>
-      <p className="fs18">{props.text}</p>
+      <h3 className="text-center mt-3">{props.bird.name}</h3>
+      <h4 className="text-center mt-1">({props.bird.species})</h4>
+      <p className="fs18">{props.bird.description}</p>
      
     </div>
   );
 }
 
-export default BirdDescription;
+const mapStateToProps = state => {
+  return {
+    birdUrl: state.app.birdUrl,
+    bird: state.nav.bird    
+  }
+}
+
+const mapDispatchToProps = {
+  getPhotoURL
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BirdDescription);
