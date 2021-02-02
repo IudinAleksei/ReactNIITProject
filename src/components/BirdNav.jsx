@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { connect } from "react-redux";
-import { changeBird, changeGroup } from '../redux/actions';
+import { changeBird, changeGroup, hideImage } from '../redux/actions';
 
 
 
 function BirdNav(props) { 
 
   useEffect(() => {
+    props.hideImage();
     props.changeGroup(props.match.params.group);    
   });
 
@@ -21,7 +22,8 @@ function BirdNav(props) {
               href="/#" 
               onClick={(event => {
                 event.preventDefault();
-                props.changeBird(bird.id - 1);                
+                props.changeBird(bird.id - 1);
+                props.hideImage();                
               })}
             >{bird.name}</a>
           </li>
@@ -40,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   changeGroup,
-  changeBird
+  changeBird,
+  hideImage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BirdNav);

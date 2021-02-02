@@ -1,4 +1,4 @@
-import { SHOW_LOADER, HIDE_LOADER, SWITCH_BIRD, SWITCH_GROUP, SEND_REQUEST } from "./types"
+import { SHOW_IMAGE, HIDE_IMAGE, SWITCH_BIRD, SWITCH_GROUP, SEND_REQUEST } from "./types"
 import { URL_PHOTO_API } from '../common/constants';
 
 const getDataFromApi = async (url) => {
@@ -12,15 +12,15 @@ const getDataFromApi = async (url) => {
   }
 }
 
-export function showLoader() {
+export function showImage() {
   return {
-    type: SHOW_LOADER
+    type: SHOW_IMAGE
   }
 }
 
-export function hideLoader() {
+export function hideImage() {
   return {
-    type: HIDE_LOADER
+    type: HIDE_IMAGE
   }
 }
 
@@ -31,7 +31,7 @@ export function changeGroup(group) {
   }
 }
 
-export function changeBird(bird) {
+export function changeBird(bird) {  
   return {
     type: SWITCH_BIRD,
     payload: bird

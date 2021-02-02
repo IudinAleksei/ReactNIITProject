@@ -1,13 +1,19 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { getPhotoURL } from '../redux/actions';
+import { getPhotoURL, showImage } from '../redux/actions';
 
 
-const BirdDescription = (props) => {
+const BirdDescription = (props) => {  
 
-  useEffect(() => {
+  useEffect(() => {      
     props.getPhotoURL(props.bird.species);    
-  }, [props.bird.species]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.bird]);
+
+  let classes = 'card-img-top img-thumbnail';
+  if (props.loading) {
+    classes += ' invisible'
+  }
   
   return (
     <div className="bird-description">
@@ -15,8 +21,8 @@ const BirdDescription = (props) => {
         <img 
           key={props.bird.species}
           src={props.birdUrl} 
-          // onLoad={((event) => event.target.parentNode.classList.remove('invisible'))}
-          className="card-img-top img-thumbnail"  
+          onLoad={(() => props.showImage())}
+          className={classes}  
           alt={props.bird.species}/>
           <div className="spinner-border text-info centered" role="status">
             <span className="sr-only">Loading...</span>
@@ -34,12 +40,14 @@ const BirdDescription = (props) => {
 const mapStateToProps = state => {
   return {
     birdUrl: state.app.birdUrl,
-    bird: state.nav.bird    
+    bird: state.nav.bird,
+    loading: state.app.loading    
   }
 }
 
 const mapDispatchToProps = {
-  getPhotoURL
+  getPhotoURL,
+  showImage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BirdDescription);
